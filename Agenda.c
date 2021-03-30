@@ -242,7 +242,7 @@ void alterar(ListaEncadeada *lista, texto_t nome)
         printf("O contato nao existe!\n");
 }
 
-void salvarContato(Contato *contato)
+void escreverArquivo(Contato *contato)
 {
     FILE *arq = fopen("contatos.txt", "a");
     fprintf(arq, "Nome: %s", contato->nome);
@@ -336,15 +336,15 @@ int main()
 
         case 6:
             printf("\nSaindo da sua agenda de contatos...\n");
-                 Contato *contato = obterArray(lista);
+            Contato *contato = obterArray(lista);
 
-                for(int i = 0; i < tamanho(lista); i++){
-
-                    salvarContato(contatos[i]);
-                }
-                exit(1);
+            for (int i = 0; i < tamanho(lista); i++)
+            {
+                escreverArquivo(contatos[i]);
+            }
+            exit(1);
             break;
-    
+
         default:
             printf("\nOpcao invalida!\n");
             break;
